@@ -1,4 +1,3 @@
-
 import streamlit as st
 from PIL import Image, ImageDraw, ImageFont
 import os
@@ -6,14 +5,20 @@ import json
 from datetime import datetime
 
 # Title
-st.title("🧠 Desi Meme Maker")
+st.title("🧠 Desi Meme Maker + AI Caption Suggester")
 st.subheader("Caption memes in your own language and contribute to AI training!")
 
 # Upload meme template
 uploaded_image = st.file_uploader("📷 Upload a meme template", type=["jpg", "jpeg", "png"])
 
+# Optional: Generate AI caption (mocked for now)
+generate = st.button("🤖 Suggest Caption (AI)")
+if generate:
+    # Placeholder for AI response (simulate Hugging Face model output)
+    st.info("🤖 Suggested Caption: \"Ee photo chusthe naku exam stress vacchindi.\"")
+
 # Caption input
-caption = st.text_input("✍️ Enter your caption in your local language")
+caption = st.text_input("✍️ Enter your own caption in your local language")
 language = st.selectbox("🌐 Choose your language", ["Telugu", "Hindi", "Tamil", "Kannada", "Malayalam", "Other"])
 
 # Output directory for corpus
@@ -79,3 +84,4 @@ if uploaded_image and caption:
     st.success("✅ Meme saved and data recorded!")
 else:
     st.info("Upload a meme template and add a caption to get started.")
+
